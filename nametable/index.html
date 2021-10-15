@@ -243,10 +243,20 @@
 <dt class="sig sig-object py" id="nametable.Pattern.Pattern">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Pattern.Pattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A generic implementation of <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated" title="nametable.PatternAnimated.PatternAnimated"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternAnimated</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="nametable.Pattern.Pattern.from_numpy_array">
 <em class="property"><span class="pre">classmethod</span> </em><span class="sig-name descname"><span class="pre">from_numpy_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Pattern.Pattern.from_numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a Pattern from a numpy array of a size (8, 8).</p>
+<dd><p>Wraps <a class="reference internal" href="#nametable.PatternMeta.PatternMeta.from_numpy_array" title="nametable.PatternMeta.PatternMeta.from_numpy_array"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_numpy_array()</span></code></a> to create an
+instance directly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -255,39 +265,68 @@
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a></dt><dd></dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.Pattern.Pattern.meta">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.Pattern.Pattern.meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Tile the Pattern represents.</p>
+<dd><p>Provides the wrapped meta class that the instance is representing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>Tile</dt><dd><p>The Tile the Pattern represents.</p>
+<dt>PatternMeta</dt><dd><p>The current <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a> that this instance
+is representing.</p>
 </dd>
 </dl>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The underlying <cite>_meta</cite> should never be changed.</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.Pattern.Pattern.numpy_array">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.Pattern.Pattern.numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd><p>An array representation of the Tile.</p>
+<dd><p>Provides a Numpy array that represents the pattern as a 2D matrix of the pixels of
+the pattern.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>NDArray[ubyte]</dt><dd><p>The Tile represented as an array.</p>
+<dt>NDArray[ubyte]</dt><dd><p>The array is equivalent to the meta that the instance is representing.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>This is a more efficient implementation of the same <cite>Tile</cite> implementation.
-This implementation will cache the result, which can dramatically reduce math operations.</p>
+<p>The instance ensures that array provided is identical to the wrapped meta it represents.</p>
+<p>This method is more efficient than the meta instance, with the results being cached,
+dramatically reducing math operations for large-scale operations.</p>
+<p>The array provided should never be modified.  If it is modified, this will interfere
+with the caching of the Pattern and may cause undesired artifacts.</p>
+<p class="rubric">Examples</p>
+<p>When creating the instance, the class will check if the an equivalent instance of meta
+was already utilized to create this class.  If one exists, it will return the instance
+of the already instantiated Pattern, otherwise it will create a new instance and cache
+it into a weak reference dictionary for future instantiations.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">meta</span> <span class="o">=</span> <span class="n">PatternMeta</span><span class="p">(</span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern1</span> <span class="o">=</span> <span class="n">Pattern</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern2</span> <span class="o">=</span> <span class="n">Pattern</span><span class="p">(</span><span class="n">meta</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern1</span> <span class="ow">is</span> <span class="n">pattern2</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Likewise, when creating an array, the Pattern will cache the result after its first
+creation.  The following code will only result in one execution of a numpy array.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pattern1</span><span class="o">.</span><span class="n">numpy_array</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern2</span><span class="o">.</span><span class="n">numpy_array</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -305,6 +344,9 @@ internals of the NES.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Pattern.Pattern" title="nametable.Pattern.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternAnimated.PatternAnimatedProtocol" title="nametable.PatternAnimated.PatternAnimatedProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternAnimatedProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated" title="nametable.PatternAnimated.PatternAnimated"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternAnimated</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="py property">
@@ -320,12 +362,6 @@ is representing.</p>
 </dl>
 </dd>
 </dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a></dt><dd></dd>
-</dl>
-</div>
 </dd></dl>
 
 <dl class="py property">
