@@ -207,6 +207,22 @@
 <dt class="sig sig-object py" id="nametable.Animator.AnimatedProtocol">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">AnimatedProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Animator.AnimatedProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.Protocol" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a></p>
+<p>A class that ensures that the animator dictates which frame is being shown for
+an animated object.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatorProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Animator.Animator" title="nametable.Animator.Animator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animator</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>animator: The instance of the animator controlling the frame shown.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.Animator.AnimatedProtocol.animator">
 <span class="sig-name descname"><span class="pre">animator</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><span class="pre">nametable.Animator.AnimatorProtocol</span></a></em><a class="headerlink" href="#nametable.Animator.AnimatedProtocol.animator" title="Permalink to this definition">¶</a></dt>
@@ -218,6 +234,22 @@
 <dt class="sig sig-object py" id="nametable.Animator.Animator">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Animator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Animator.Animator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A generic implementation of <a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatorProtocol</span></code></a> that utilizes
+a simple <a class="reference external" href="https://docs.python.org/dev/library/dataclasses.html#dataclasses.dataclass" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataclass()</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatorProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Animator.AnimatedProtocol" title="nametable.Animator.AnimatedProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatedProtocol</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>frame: The current frame that the :class:`~nametable.Animator.AnimatedProtocol` is on.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.Animator.Animator.frame">
 <span class="sig-name descname"><span class="pre">frame</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></em><a class="headerlink" href="#nametable.Animator.Animator.frame" title="Permalink to this definition">¶</a></dt>
@@ -229,6 +261,22 @@
 <dt class="sig sig-object py" id="nametable.Animator.AnimatorProtocol">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">AnimatorProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Animator.AnimatorProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.Protocol" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a></p>
+<p>A class that handles the changing one an integer, representing the frame
+that the <a class="reference internal" href="#nametable.Animator.AnimatedProtocol" title="nametable.Animator.AnimatedProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatedProtocol</span></code></a> is on.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Animator.AnimatedProtocol" title="nametable.Animator.AnimatedProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatedProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Animator.Animator" title="nametable.Animator.Animator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animator</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>frame: The current frame that the :class:`~nametable.Animator.AnimatedProtocol` is on.</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.Animator.AnimatorProtocol.frame">
 <span class="sig-name descname"><span class="pre">frame</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a></em><a class="headerlink" href="#nametable.Animator.AnimatorProtocol.frame" title="Permalink to this definition">¶</a></dt>
