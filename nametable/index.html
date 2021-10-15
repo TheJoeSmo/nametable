@@ -241,7 +241,7 @@
 <span id="nametable-pattern-module"></span><h2>nametable.Pattern module<a class="headerlink" href="#module-nametable.Pattern" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="nametable.Pattern.Pattern">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Pattern.Pattern" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Pattern.Pattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="nametable.Pattern.Pattern.from_numpy_array">
@@ -255,6 +255,22 @@
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nametable.Pattern.Pattern.meta">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.Pattern.Pattern.meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Tile the Pattern represents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Tile</dt><dd><p>The Tile the Pattern represents.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The underlying <cite>_meta</cite> should never be changed.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -274,22 +290,6 @@
 This implementation will cache the result, which can dramatically reduce math operations.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="nametable.Pattern.Pattern.tile">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tile</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.Pattern.Pattern.tile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Tile the Pattern represents.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>Tile</dt><dd><p>The Tile the Pattern represents.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>The underlying <cite>_tile</cite> should never be changed.</p>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class">
@@ -297,13 +297,13 @@ This implementation will cache the result, which can dramatically reduce math op
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PatternProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Pattern.PatternProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.Protocol" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a></p>
 <dl class="py property">
-<dt class="sig sig-object py" id="nametable.Pattern.PatternProtocol.numpy_array">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.Pattern.PatternProtocol.numpy_array" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="nametable.Pattern.PatternProtocol.meta">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.Pattern.PatternProtocol.meta" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="nametable.Pattern.PatternProtocol.tile">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tile</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.Pattern.PatternProtocol.tile" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="nametable.Pattern.PatternProtocol.numpy_array">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.Pattern.PatternProtocol.numpy_array" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -319,6 +319,20 @@ This implementation will cache the result, which can dramatically reduce math op
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.animator">
 <span class="sig-name descname"><span class="pre">animator</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><span class="pre">nametable.Animator.AnimatorProtocol</span></a></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.animator" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.meta">
+<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Tile the Pattern represents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>Tile</dt><dd><p>The Tile the Pattern represents.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.numpy_array">
@@ -338,20 +352,6 @@ This implementation will cache the result, which can dramatically reduce math op
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.stack">
 <span class="sig-name descname"><span class="pre">stack</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><span class="pre">nametable.Pattern.PatternProtocol</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.stack" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.tile">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">tile</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.tile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Tile the Pattern represents.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>Tile</dt><dd><p>The Tile the Pattern represents.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
 
 </dd></dl>
 
