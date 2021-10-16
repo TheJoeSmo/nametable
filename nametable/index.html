@@ -866,23 +866,6 @@ represent the palette index for a given pattern.:</p>
 <dt class="sig sig-object py" id="nametable.PatternTable.PatternTable">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PatternTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern_array</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.PatternTable.PatternTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="nametable.PatternTable.PatternTable.numpy_array">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.object_" title="(in NumPy v1.21)"><span class="pre">numpy.object_</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.PatternTable.PatternTable.numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates an array of Patterns from <cite>PatternArray</cite></p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>NDArray[<a href="#id1"><span class="problematic" id="id2">object_</span></a>]</dt><dd><p>A matrix of Patterns with a width of 16.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>If the amount of Patterns does not evenly fit into 16, then None will be
-inserted into the remaining fields.</p>
-</dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.PatternTable.PatternTable.pattern_array">
 <span class="sig-name descname"><span class="pre">pattern_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#nametable.Pattern.Pattern" title="nametable.Pattern.Pattern"><span class="pre">nametable.Pattern.Pattern</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.PatternTable.PatternTable.pattern_array" title="Permalink to this definition">¶</a></dt>
@@ -894,11 +877,6 @@ inserted into the remaining fields.</p>
 <dt class="sig sig-object py" id="nametable.PatternTable.PatternTableProtocol">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PatternTableProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.PatternTable.PatternTableProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.Protocol" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a></p>
-<dl class="py property">
-<dt class="sig sig-object py" id="nametable.PatternTable.PatternTableProtocol.numpy_array">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://numpy.org/doc/stable/reference/arrays.scalars.html#numpy.object_" title="(in NumPy v1.21)"><span class="pre">numpy.object_</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.PatternTable.PatternTableProtocol.numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.PatternTable.PatternTableProtocol.pattern_array">
 <span class="sig-name descname"><span class="pre">pattern_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#nametable.Pattern.Pattern" title="nametable.Pattern.Pattern"><span class="pre">nametable.Pattern.Pattern</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.PatternTable.PatternTableProtocol.pattern_array" title="Permalink to this definition">¶</a></dt>
