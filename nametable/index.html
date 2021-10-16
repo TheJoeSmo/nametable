@@ -444,8 +444,25 @@ improve performance.</p>
 <span id="nametable-patternanimated-module"></span><h2>nametable.PatternAnimated module<a class="headerlink" href="#module-nametable.PatternAnimated" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PatternAnimated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">animator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><span class="pre">nametable.Animator.AnimatorProtocol</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PatternAnimated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stack</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><span class="pre">nametable.Pattern.PatternProtocol</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><span class="pre">nametable.Animator.AnimatorProtocol</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A generic implementation of <a class="reference internal" href="#nametable.PatternAnimated.PatternAnimatedProtocol" title="nametable.PatternAnimated.PatternAnimatedProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternAnimatedProtocol</span></code></a>
+that utilizes an instance of <a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatorProtocol</span></code></a> to dictate
+the <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a> meta for the instance from a
+<a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a> of <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>.</p>
+<p class="rubric">Notes</p>
+<p>The user must ensure that the <a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated.animator" title="nametable.PatternAnimated.PatternAnimated.animator"><code class="xref py py-attr docutils literal notranslate"><span class="pre">animator</span></code></a> must never have a frame greater than
+the length of <a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated.stack" title="nametable.PatternAnimated.PatternAnimated.stack"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stack</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>stack: tuple[PatternProtocol]</strong></dt><dd><p>A tuple of patterns that the instance’s animator selects from for a given frame.</p>
+</dd>
+<dt><strong>animator: AnimatorProtocol</strong></dt><dd><p>The instance of the animator controlling the frame shown.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.animator">
 <span class="sig-name descname"><span class="pre">animator</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><span class="pre">nametable.Animator.AnimatorProtocol</span></a></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.animator" title="Permalink to this definition">¶</a></dt>
@@ -454,29 +471,101 @@ improve performance.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.meta">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">meta</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><span class="pre">nametable.PatternMeta.PatternMeta</span></a></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.meta" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the Tile the Pattern represents.</p>
+<dd><p>Provides the meta the wrapped meta class that the pattern of the current
+<a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">nametable.Pattern.PatternProtocol</span></code></a> inside <a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated.stack" title="nametable.PatternAnimated.PatternAnimated.stack"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stack</span></code></a> is representing.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>Tile</dt><dd><p>The Tile the Pattern represents.</p>
+<dt>PatternMeta</dt><dd><p>The current <a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a> that this instance
+is representing, dictated by <a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated.animator" title="nametable.PatternAnimated.PatternAnimated.animator"><code class="xref py py-attr docutils literal notranslate"><span class="pre">animator</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Pattern.Pattern" title="nametable.Pattern.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>The animator can dynamically change the meta provided</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">PatternAnimated</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="n">Pattern</span><span class="p">(</span><span class="n">PatternMeta</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="n">Pattern</span><span class="p">(</span><span class="n">PatternMeta</span><span class="p">(</span><span class="n">data</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))),</span>
+<span class="gp">... </span>    <span class="n">Animator</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span><span class="o">.</span><span class="n">meta</span>
+<span class="go">PatternMeta(data)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span><span class="o">.</span><span class="n">animator</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span><span class="o">.</span><span class="n">meta</span>
+<span class="go">PatternMeta(data[::-1])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimated.numpy_array">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimated.numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd><p>An array representation of the Tile.</p>
+<dd><p>Provides an array that represents the pattern as a 2D matrix of the pixels of
+the pattern of the current <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">nametable.Pattern.PatternProtocol</span></code></a> inside
+<a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated.stack" title="nametable.PatternAnimated.PatternAnimated.stack"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stack</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>NDArray[ubyte]</dt><dd><p>The Tile represented as an array.</p>
+<dt>NDArray[ubyte]</dt><dd><p>The array of the current <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">nametable.Pattern.PatternProtocol</span></code></a> dictated by
+<a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated.animator" title="nametable.PatternAnimated.PatternAnimated.animator"><code class="xref py py-attr docutils literal notranslate"><span class="pre">animator</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Pattern.Pattern" title="nametable.Pattern.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>The animator can dynamically change the array provided</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">PatternAnimated</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="n">Pattern</span><span class="p">(</span><span class="n">PatternMeta</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="n">Pattern</span><span class="p">(</span><span class="n">PatternMeta</span><span class="p">(</span><span class="n">data</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]))),</span>
+<span class="gp">... </span>    <span class="n">Animator</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span><span class="o">.</span><span class="n">numpy_array</span>
+<span class="go">array(</span>
+<span class="go">    [</span>
+<span class="go">        [0, 1, 0, 0, 0, 0, 0, 3],</span>
+<span class="go">        [1, 1, 0, 0, 0, 0, 3, 0],</span>
+<span class="go">        [0, 1, 0, 0, 0, 3, 0, 0],</span>
+<span class="go">        [0, 1, 0, 0, 3, 0, 0, 0],</span>
+<span class="go">        [0, 0, 0, 3, 0, 2, 2, 0],</span>
+<span class="go">        [0, 0, 3, 0, 0, 0, 0, 2],</span>
+<span class="go">        [0, 3, 0, 0, 0, 0, 2, 0],</span>
+<span class="go">        [3, 0, 0, 0, 0, 2, 2, 2],</span>
+<span class="go">    ],</span>
+<span class="go">    dtype=ubyte,</span>
+<span class="go">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span><span class="o">.</span><span class="n">animator</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span><span class="o">.</span><span class="n">numpy_array</span>
+<span class="go">array(</span>
+<span class="go">    [</span>
+<span class="go">        [0, 0, 0, 3, 0, 1, 0, 0],</span>
+<span class="go">        [0, 0, 3, 0, 1, 1, 0, 0],</span>
+<span class="go">        [0, 3, 0, 0, 0, 1, 0, 0],</span>
+<span class="go">        [3, 0, 0, 0, 0, 1, 0, 0],</span>
+<span class="go">        [0, 2, 2, 0, 0, 0, 0, 3],</span>
+<span class="go">        [0, 0, 0, 2, 0, 0, 1, 2],</span>
+<span class="go">        [0, 0, 2, 0, 0, 1, 2, 0],</span>
+<span class="go">        [0, 2, 2, 2, 2, 1, 1, 0],</span>
+<span class="go">    ],</span>
+<span class="go">    dtype=ubyte,</span>
+<span class="go">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py attribute">
@@ -490,6 +579,25 @@ improve performance.</p>
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimatedProtocol">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">PatternAnimatedProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimatedProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">nametable.Pattern.PatternProtocol</span></code></a>, <a class="reference internal" href="#nametable.Animator.AnimatedProtocol" title="nametable.Animator.AnimatedProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">nametable.Animator.AnimatedProtocol</span></code></a>, <a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.Protocol" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a></p>
+<p>A <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a> that determines the
+<a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a> that is represented by the frame inside
+<a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatorProtocol</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimatorProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Animator.Animator" title="nametable.Animator.Animator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Animator</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternAnimated.PatternAnimated" title="nametable.PatternAnimated.PatternAnimated"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternAnimated</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>animator: AnimatorProtocol</strong></dt><dd><p>The instance of the animator controlling the frame shown.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.PatternAnimated.PatternAnimatedProtocol.animator">
 <span class="sig-name descname"><span class="pre">animator</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="#nametable.Animator.AnimatorProtocol" title="nametable.Animator.AnimatorProtocol"><span class="pre">nametable.Animator.AnimatorProtocol</span></a></em><a class="headerlink" href="#nametable.PatternAnimated.PatternAnimatedProtocol.animator" title="Permalink to this definition">¶</a></dt>
