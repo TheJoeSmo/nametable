@@ -300,12 +300,110 @@ that the <a class="reference internal" href="#nametable.Animator.AnimatedProtoco
 <span id="block-module"></span><h2>Block Module<a class="headerlink" href="#module-nametable.Block" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="nametable.Block.Block">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern_table</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.PatternTable.PatternTableProtocol" title="nametable.PatternTable.PatternTableProtocol"><span class="pre">nametable.PatternTable.PatternTableProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Block.Block" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">Block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern_table</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#nametable.PatternTable.PatternTableProtocol" title="nametable.PatternTable.PatternTableProtocol"><span class="pre">nametable.PatternTable.PatternTableProtocol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference external" href="https://docs.python.org/dev/library/stdtypes.html#tuple" title="(in Python v3.11)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Block.Block" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A generic implementation of <a class="reference internal" href="#nametable.Block.BlockProtocol" title="nametable.Block.BlockProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockProtocol</span></code></a> that utilizes
+a simple <a class="reference external" href="https://docs.python.org/dev/library/dataclasses.html#dataclasses.dataclass" title="(in Python v3.11)"><code class="xref py py-func docutils literal notranslate"><span class="pre">dataclass()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>BlockInvalidSizeException</dt><dd><p>Raised if the length of <a class="reference internal" href="#nametable.Block.Block.patterns" title="nametable.Block.Block.patterns"><code class="xref py py-attr docutils literal notranslate"><span class="pre">patterns</span></code></a> is not equal to four.</p>
+</dd>
+<dt>PatternTableIndexException</dt><dd><p>Raise if any index inside <a class="reference internal" href="#nametable.Block.Block.patterns" title="nametable.Block.Block.patterns"><code class="xref py py-attr docutils literal notranslate"><span class="pre">patterns</span></code></a> would result in an
+<a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#IndexError" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">IndexError</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>To create an instance of a Block.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Block</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">PatternTable</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">(</span>
+<span class="gp">... </span>            <span class="n">Pattern</span><span class="p">(</span><span class="n">PatternMeta</span>
+<span class="gp">... </span>                <span class="p">(</span>
+<span class="gp">... </span>                    <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87&quot;</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="p">),</span>
+<span class="gp">... </span>        <span class="p">)</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Block(PatternTable((Pattern(PatternMeta(...)),)), (0, 0, 0, 0,))</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pattern_table: PatternTableProtocol</strong></dt><dd><p>The instance of <a class="reference internal" href="#nametable.PatternTable.PatternTableProtocol" title="nametable.PatternTable.PatternTableProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternTableProtocol</span></code></a> to serve as the
+lookup table of instances of <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>.</p>
+</dd>
+<dt><strong>patterns: tuple[int, int, int, int]</strong></dt><dd><p>The indexes into <a class="reference internal" href="#nametable.Block.Block.pattern_table" title="nametable.Block.Block.pattern_table"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pattern_table</span></code></a> to create instances of
+<a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a> from.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.Block.Block.numpy_array">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.Block.Block.numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generates a two dimensional array with two bits per pixel, representing the respective
+instances of <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>
+<a class="reference internal" href="#nametable.Pattern.PatternProtocol.numpy_array" title="nametable.Pattern.PatternProtocol.numpy_array"><code class="xref py py-attr docutils literal notranslate"><span class="pre">numpy_array</span></code></a> concatenate together to form
+a 16 by 16 pixel grid.  The order of they are shown is top left, top right, bottom left,
+bottom right, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>NDArray[ubyte]</dt><dd><p>This instance represented as an array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Examples</p>
+<p>To create an instance of a Block.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">block</span> <span class="o">=</span> <span class="n">Block</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">PatternTable</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="p">(</span>
+<span class="gp">... </span>            <span class="n">Pattern</span><span class="p">(</span><span class="n">PatternMeta</span>
+<span class="gp">... </span>                <span class="p">(</span>
+<span class="gp">... </span>                    <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;41 C2 44 48 10 20 40 80 01 02 04 08 16 21 42 87&quot;</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="p">),</span>
+<span class="gp">... </span>        <span class="p">)</span>
+<span class="gp">... </span>    <span class="p">),</span>
+<span class="gp">... </span>    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">block</span><span class="o">.</span><span class="n">numpy_array</span>
+<span class="go">array(</span>
+<span class="go">    [</span>
+<span class="go">        [0, 1, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 3],</span>
+<span class="go">        [1, 1, 0, 0, 0, 0, 3, 0, 1, 1, 0, 0, 0, 0, 3, 0],</span>
+<span class="go">        [0, 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0],</span>
+<span class="go">        [0, 1, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 3, 0, 0, 0],</span>
+<span class="go">        [0, 0, 0, 3, 0, 2, 2, 0, 0, 0, 0, 3, 0, 2, 2, 0],</span>
+<span class="go">        [0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 2],</span>
+<span class="go">        [0, 3, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 2, 0],</span>
+<span class="go">        [3, 0, 0, 0, 0, 2, 2, 2, 3, 0, 0, 0, 0, 2, 2, 2],</span>
+<span class="go">        [0, 1, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 3],</span>
+<span class="go">        [1, 1, 0, 0, 0, 0, 3, 0, 1, 1, 0, 0, 0, 0, 3, 0],</span>
+<span class="go">        [0, 1, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0],</span>
+<span class="go">        [0, 1, 0, 0, 3, 0, 0, 0, 0, 1, 0, 0, 3, 0, 0, 0],</span>
+<span class="go">        [0, 0, 0, 3, 0, 2, 2, 0, 0, 0, 0, 3, 0, 2, 2, 0],</span>
+<span class="go">        [0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 2],</span>
+<span class="go">        [0, 3, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 2, 0],</span>
+<span class="go">        [3, 0, 0, 0, 0, 2, 2, 2, 3, 0, 0, 0, 0, 2, 2, 2],</span>
+<span class="go">    ],</span>
+<span class="go">    dtype=ubyte,</span>
+<span class="go">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.Block.Block.pattern_table">
@@ -323,16 +421,68 @@ that the <a class="reference internal" href="#nametable.Animator.AnimatedProtoco
 <dt class="sig sig-object py" id="nametable.Block.BlockInvalidSizeException">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">BlockInvalidSizeException</span></span><a class="headerlink" href="#nametable.Block.BlockInvalidSizeException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#ValueError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a></p>
+<p>Raised when the length of <a class="reference internal" href="#nametable.Block.BlockProtocol.patterns" title="nametable.Block.BlockProtocol.patterns"><code class="xref py py-attr docutils literal notranslate"><span class="pre">patterns</span></code></a> is an
+invalid size for a <a class="reference internal" href="#nametable.Block.BlockProtocol" title="nametable.Block.BlockProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockProtocol</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="nametable.Block.BlockProtocol">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">BlockProtocol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nametable.Block.BlockProtocol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/typing.html#typing.Protocol" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></a></p>
+<p>A representation of a combination of four instances of
+<a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>.  Despite sounding unintuitive, this format was
+widely adopted throughout NES development due to limitations of the
+<a class="reference external" href="https://wiki.nesdev.org/w/index.php/PPU">Picture Processing Unit</a>: ‘PPU’ and memory
+space on the NES: The
+<a class="reference external" href="https://wiki.nesdev.org/w/index.php?title=PPU_attribute_tables">PPU attribute tables</a>
+could only change the color attribute every 16 pixel in both dimensions, known as a ‘Block’.
+Similarly, to store each Pattern of each Block as a list in memory would take up the
+kilobytes of memory.  By storing common sections of 2x2 Patterns, most programmers during
+this era found that memory required was dramatically reduced.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.PatternTable.PatternTableProtocol" title="nametable.PatternTable.PatternTableProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternTableProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Block.Block" title="nametable.Block.Block"><code class="xref py py-class docutils literal notranslate"><span class="pre">Block</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.Nametable.NametableProtocol" title="nametable.Nametable.NametableProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">NametableProtocol</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>pattern_table: PatternTableProtocol</strong></dt><dd><p>The instance of <a class="reference internal" href="#nametable.PatternTable.PatternTableProtocol" title="nametable.PatternTable.PatternTableProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternTableProtocol</span></code></a> to serve as the
+lookup table of instances of <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>.</p>
+</dd>
+<dt><strong>patterns: tuple[int, int, int, int]</strong></dt><dd><p>The indexes into <a class="reference internal" href="#nametable.Block.BlockProtocol.pattern_table" title="nametable.Block.BlockProtocol.pattern_table"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pattern_table</span></code></a> to create instances of
+<a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a> from.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="nametable.Block.BlockProtocol.numpy_array">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">numpy_array</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v1.21)"><span class="pre">numpy.dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">numpy.uint8</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#nametable.Block.BlockProtocol.numpy_array" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generates a two dimensional array with two bits per pixel, representing the respective
+instances of <a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a>
+<a class="reference internal" href="#nametable.Pattern.PatternProtocol.numpy_array" title="nametable.Pattern.PatternProtocol.numpy_array"><code class="xref py py-attr docutils literal notranslate"><span class="pre">numpy_array</span></code></a> concatenate together to form
+a 16 by 16 pixel grid.  The order of they are shown is top left, top right, bottom left,
+bottom right, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>NDArray[ubyte]</dt><dd><p>This instance represented as an array.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#nametable.Pattern.PatternProtocol" title="nametable.Pattern.PatternProtocol"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternProtocol</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#nametable.PatternMeta.PatternMeta" title="nametable.PatternMeta.PatternMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">PatternMeta</span></code></a></dt><dd></dd>
+</dl>
+</div>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="nametable.Block.BlockProtocol.pattern_table">
@@ -350,6 +500,10 @@ that the <a class="reference internal" href="#nametable.Animator.AnimatedProtoco
 <dt class="sig sig-object py" id="nametable.Block.PatternTableIndexException">
 <em class="property"><span class="pre">exception</span> </em><span class="sig-name descname"><span class="pre">PatternTableIndexException</span></span><a class="headerlink" href="#nametable.Block.PatternTableIndexException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/dev/library/exceptions.html#IndexError" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IndexError</span></code></a></p>
+<p>Raised when the <a class="reference external" href="https://docs.python.org/dev/library/functions.html#int" title="(in Python v3.11)"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> inside
+<a class="reference internal" href="#nametable.Block.BlockProtocol.patterns" title="nametable.Block.BlockProtocol.patterns"><code class="xref py py-attr docutils literal notranslate"><span class="pre">patterns</span></code></a> is an invalid index into
+<a class="reference internal" href="#nametable.PatternTable.PatternTableProtocol.pattern_array" title="nametable.PatternTable.PatternTableProtocol.pattern_array"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pattern_array</span></code></a> of
+<a class="reference internal" href="#nametable.Block.BlockProtocol.pattern_table" title="nametable.Block.BlockProtocol.pattern_table"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pattern_table</span></code></a>.</p>
 </dd></dl>
 
 </div>
